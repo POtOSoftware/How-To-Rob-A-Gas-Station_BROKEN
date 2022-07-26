@@ -1,0 +1,356 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://Assets/Comic Sans.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Main Menu/Main Menu.gd" type="Script" id=2]
+[ext_resource path="res://Main Menu/Settings/Settings.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Gas Station Exterior/Door.gd" type="Script" id=4]
+[ext_resource path="res://Levels/Gas Station Exterior/StaticBody.gd" type="Script" id=5]
+[ext_resource path="res://Main Menu/Speedrun Check.gd" type="Script" id=6]
+[ext_resource path="res://Main Menu/BGMusic.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Prefabs/Gas Station Sign/Gas Station Sign.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Gas Pump/Gas Pump.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Gas Station Exterior/Front.png" type="Texture" id=10]
+[ext_resource path="res://Levels/Gas Station Exterior/Concrete.png" type="Texture" id=11]
+[ext_resource path="res://Levels/Gas Station Exterior/Wall.png" type="Texture" id=12]
+[ext_resource path="res://Levels/Road/Grass.png" type="Texture" id=13]
+[ext_resource path="res://Levels/Road/Sky.png" type="Texture" id=14]
+[ext_resource path="res://Levels/Gas Station Exterior/Door.png" type="Texture" id=15]
+[ext_resource path="res://Main Menu/Debug.gd" type="Script" id=16]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.784314, 0.784314, 0.784314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.282353, 0.282353, 0.282353, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=3]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 2 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 6 )
+CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_focus = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+CheckBox/fonts/font = SubResource( 10 )
+CheckBox/styles/hover_pressed = SubResource( 7 )
+CheckBox/styles/pressed = SubResource( 9 )
+Label/fonts/font = SubResource( 11 )
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=24]
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 1, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="PanoramaSky" id=18]
+panorama = ExtResource( 14 )
+
+[sub_resource type="Environment" id=19]
+background_mode = 2
+background_sky = SubResource( 18 )
+ambient_light_energy = 5.0
+
+[sub_resource type="SpatialMaterial" id=20]
+albedo_color = Color( 0, 0.411765, 0, 1 )
+albedo_texture = ExtResource( 13 )
+metallic_specular = 0.0
+uv1_scale = Vector3( -0.05, 0, -0.05 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=21]
+albedo_texture = ExtResource( 11 )
+uv1_scale = Vector3( 0.25, 1, 0.25 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=22]
+extents = Vector3( 1.71003, 1.45142, 1 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 1, 6, 2 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_texture = ExtResource( 10 )
+uv1_scale = Vector3( -1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_texture = ExtResource( 12 )
+uv1_scale = Vector3( 1, 0.2, 0.2 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_texture = ExtResource( 11 )
+uv1_scale = Vector3( 10, 10, 1 )
+
+[sub_resource type="SpatialMaterial" id=17]
+flags_transparent = true
+albedo_texture = ExtResource( 15 )
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title Screen" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Title Screen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 41.5
+margin_right = 238.5
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 1 )
+text = "How To Rob A Gas Station"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug" type="Label" parent="Title Screen/Title"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -174.0
+margin_right = 174.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 24 )
+text = "Debug Mode "
+align = 1
+valign = 1
+script = ExtResource( 16 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title Screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 90.0
+margin_top = 61.5
+margin_right = 190.0
+margin_bottom = 138.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGame" type="Button" parent="Title Screen/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 23.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speedrun Check" type="CheckBox" parent="Title Screen/VBoxContainer/StartGame"]
+visible = false
+margin_left = 106.0
+margin_top = 0.499
+margin_right = 186.0
+margin_bottom = 23.499
+focus_mode = 0
+custom_fonts/font = SubResource( 23 )
+enabled_focus_mode = 0
+text = "Speedrun"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="Button" parent="Title Screen/VBoxContainer"]
+margin_top = 27.0
+margin_right = 100.0
+margin_bottom = 50.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGame" type="Button" parent="Title Screen/VBoxContainer"]
+margin_top = 54.0
+margin_right = 100.0
+margin_bottom = 77.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Title Screen"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = 177.0
+margin_right = 56.0
+margin_bottom = 200.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="Gas Station Exterior" type="Spatial" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Gas Station Exterior"]
+environment = SubResource( 19 )
+
+[node name="Grass" type="CSGBox" parent="Gas Station Exterior"]
+use_collision = true
+width = 1000.0
+height = 1.0
+depth = 1000.0
+material = SubResource( 20 )
+
+[node name="Concrete" type="CSGBox" parent="Gas Station Exterior"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.526861, -13.0333 )
+width = 48.5841
+height = 0.002
+depth = 36.8609
+material = SubResource( 21 )
+
+[node name="Gas Pump" parent="Gas Station Exterior" instance=ExtResource( 9 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.04842, 0.512569, -8.56759 )
+
+[node name="Explosive" type="StaticBody" parent="Gas Station Exterior/Gas Pump"]
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Gas Station Exterior/Gas Pump/Explosive"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.207819, -6.53072 )
+shape = SubResource( 22 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Gas Station Exterior/Gas Pump/Explosive"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.531 )
+shape = SubResource( 22 )
+
+[node name="Gas Station Sign" parent="Gas Station Exterior" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -26, 0, -42 )
+
+[node name="StaticBody" type="StaticBody" parent="Gas Station Exterior/Gas Station Sign"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Gas Station Exterior/Gas Station Sign/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.33333, 0 )
+shape = SubResource( 8 )
+
+[node name="Gas Station" type="Spatial" parent="Gas Station Exterior"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0197, 0, 0 )
+
+[node name="Front" type="CSGBox" parent="Gas Station Exterior/Gas Station"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 34.8895, 6.16759, -13 )
+use_collision = true
+height = 29.9145
+depth = 12.7861
+material = SubResource( 14 )
+
+[node name="Front2" type="CSGBox" parent="Gas Station Exterior/Gas Station"]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 48.9681, 6.16759, -27.1105 )
+use_collision = true
+height = 29.9145
+depth = 12.7861
+material = SubResource( 16 )
+
+[node name="Front3" type="CSGBox" parent="Gas Station Exterior/Gas Station"]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 48.9218, 6.16759, 1.26919 )
+use_collision = true
+height = 29.9145
+depth = 12.7861
+material = SubResource( 16 )
+
+[node name="Front4" type="CSGBox" parent="Gas Station Exterior/Gas Station"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 63.0124, 6.16759, -12.9935 )
+use_collision = true
+height = 30.0323
+depth = 12.7861
+material = SubResource( 16 )
+
+[node name="Top" type="CSGBox" parent="Gas Station Exterior/Gas Station"]
+transform = Transform( -4.37114e-08, -4.37988e-08, -1, -1, -4.37988e-08, 4.37114e-08, -4.37114e-08, 1.002, -4.37114e-08, 49.0805, 11.6922, -13 )
+use_collision = true
+height = 29.9145
+depth = 29.7402
+material = SubResource( 15 )
+
+[node name="Door" type="CSGBox" parent="Gas Station Exterior/Gas Station"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 34.8612, 3.20038, -8.13515 )
+use_collision = true
+height = 8.20213
+depth = 5.8167
+material = SubResource( 17 )
+script = ExtResource( 4 )
+
+[node name="Camera" type="Camera" parent="Gas Station Exterior"]
+transform = Transform( 0.707107, 0.183013, -0.683013, 0, 0.965926, 0.258819, 0.707107, -0.183013, 0.683013, -19, 15, 12 )
+current = true
+far = 500.0
+
+[node name="Version" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -43.0
+margin_top = -23.0
+text = "v2.2.1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+bus = "Music"
+
+[connection signal="mouse_entered" from="Title Screen/VBoxContainer/StartGame" to="." method="_on_StartGame_mouse_entered"]
+[connection signal="pressed" from="Title Screen/VBoxContainer/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="toggled" from="Title Screen/VBoxContainer/StartGame/Speedrun Check" to="." method="_on_Speedrun_Check_toggled"]
+[connection signal="pressed" from="Title Screen/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Title Screen/VBoxContainer/QuitGame" to="." method="_on_QuitGame_pressed"]
+[connection signal="pressed" from="Title Screen/Button" to="." method="_on_Button_pressed"]
